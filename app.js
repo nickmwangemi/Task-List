@@ -14,6 +14,9 @@ function loadEventListeners() {
     form.addEventListener('submit', addTask)
         // Remove task event
     taskList.addEventListener('click', removeTask)
+        // clear task event
+    clearBtn.addEventListener('click', clearTasks)
+
 }
 
 // Add Task
@@ -51,4 +54,15 @@ function removeTask(e) {
             e.target.parentElement.parentElement.remove()
         }
     }
+}
+
+// Clear tasks
+function clearTasks() {
+    // taskList.innerHTML = ''
+
+    // faster
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild)
+    }
+    // REFERENCE LINK : https://jsperf.com/innerhtml-vs-removechild/47
 }
